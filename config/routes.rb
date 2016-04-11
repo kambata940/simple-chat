@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
   root 'sessions#new'
 
-  scope 'chat_rooms/:id' do
-    get '/' => 'messages#index'
-    post '/' => 'messages#create'
-  end
-
+  resources :poker_rooms
   resource :session, except: :show
-  resources :chat_rooms, except: :show
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  namespace :api, format: :json, constraints: { format: :json } do
+    namespace :v1 do
+      resources :messages, only: :create
+      resource :chat_rooms, only: :create
+    end
+  end
 
   # Serve websocket cable requests in-process
   mount ActionCable.server => '/cable'

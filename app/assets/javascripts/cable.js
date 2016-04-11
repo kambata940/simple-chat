@@ -9,4 +9,4 @@
 //
 
 if(!this.App) { this.App = {}; };
-App.cable = ActionCable.createConsumer('cable');
+App.cable = ActionCable.createConsumer('ws://localhost:3000/cable');

@@ -6,9 +6,11 @@ class SessionsController < ApplicationController
 
   def create
     user = User.new(name: params[:name])
+
     if user.save
+      cookies.signed[:username] = user.name
       session[:username] = user.name
-      redirect_to chat_rooms_path
+      redirect_to poker_rooms_path
     else
       render :new
     end
