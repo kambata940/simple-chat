@@ -6,7 +6,7 @@ module ApplicationCable
     identified_by :username
 
     def connect
-      Rails.logger.info("#{cookies.signed[:username]}Connection!!!!!!\n!!!!!!!!!!!!!!!!\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+      Rails.logger.info("#{Time.current}: New connection for user: #{cookies.signed[:username]}")
       self.username = cookies.signed[:username]
     end
   end

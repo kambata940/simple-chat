@@ -5,7 +5,9 @@ class PokerRoomsController < ApplicationController
 
   def show
     status = REDIS.hset('chat_room', session[:username], params[:id])
-    Rails.logger.info("set in redis #{status}")
+    Rails.logger.info(
+      "#{Time.current}: User #{session[:username]} mapped in Redis for room #{params[:id]}, status:#{status}"
+    )
     @chat_room = ChatRoom.find_by(id: params[:id])
     @message = Message.new
   end
