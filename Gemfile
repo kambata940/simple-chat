@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# Use Devise for authentication
+gem "devise", :github => 'plataformatec/devise', :branch => 'master'
+gem "omniauth"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '>= 5.0.0.beta3', '< 5.1'
 gem 'pg'
