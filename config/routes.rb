@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  # Device requires root in order to work
+  devise_for :users
   root 'sessions#new'
 
   resources :poker_rooms
