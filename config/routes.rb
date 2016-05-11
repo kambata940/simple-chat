@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  root 'sessions#new'
+  devise_for :users
+  root 'chat_rooms#index'
 
   scope 'chat_rooms/:id' do
     get '/' => 'messages#index'
     post '/' => 'messages#create'
   end
 
-  resource :session, except: :show
   resources :chat_rooms, except: :show
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

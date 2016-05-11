@@ -13,11 +13,12 @@
             </div>
         </div>
     </div>
-    
-    <div class="main-content">
-        <%= yield %>
-    </div>
-    
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+        <% if user_signed_in? %>
+          <%= render 'devise/menu/login_items' %>
+        <% end %>
+      <%= yield %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>
 </html>
