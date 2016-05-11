@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
-  root 'sessions#new'
+  devise_for :users
+  root 'chat_rooms#index'
 
+  scope 'chat_rooms/:id' do
+    get '/' => 'messages#index'
+    post '/' => 'messages#create'
+  end
+
+  resources :chat_rooms, except: :show
   resources :poker_rooms
-  resource :session, except: :show
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :api, format: :json, constraints: { format: :json } do
     namespace :v1 do

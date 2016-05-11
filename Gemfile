@@ -1,5 +1,11 @@
 source 'https://rubygems.org'
 
+gem 'database_cleaner'
+gem 'factory_girl_rails'
+gem 'poltergeist'
+gem 'capybara'
+# Use Devise for User authentication
+gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '>= 5.0.0.beta3', '< 5.1'
 gem 'pg'
