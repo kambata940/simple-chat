@@ -1,25 +1,30 @@
 <div id="live-chat">
-    <header class="clearfix">
-        <a href="#" class="chat-close">x</a>
-        <h4><%= @chat_room.name %></h4>
-        <!-- <span class="chat-message-counter">3</span> -->
+    <header class="clearfix" data-bind="toggler: { toBeToggled: '.chat', subscriber: opened }">
+        <h4 data-bind="text: roomName"></h4>
+        <span class="chat-message-counter" data-bind="visible: unreadMessages(),
+                                                      text: unreadMessages()"></span>
     </header>
     <div class="chat">
-        <div class="chat-history">
-            <% @chat_room.messages.each do |message| %>
+        <div class="chat-history" data-bind="foreach: messages, scrollToBottomOnChange: messages">
             <div class="chat-message clearfix">
                 <div class="chat-message-content clearfix">
-                    <% @message = message %>
-                    <span class="chat-time"><%= @message.sended %></span>
-                    <h5><%= @message.user_name %></h5>
-                    <p><%= @message.content %></p>
+                    <span class="chat-time" data-bind="text: sended"></span>
+                    <h5 data-bind="text: user_name"></h5>
+                    <p data-bind="text: content"></p>
                 </div>
             </div>
             <hr>
-            <% end %>
         </div>
-        <form action="<%= chat_room_path %>" class="new-message">
-            <input type="text" name="content" id="content">
+        <form data-bind="submit: submitMessage">
+            <input name="content" data-bind="value: newMessageContent" autocomplete="off">
         </form>
     </div>
 </div>
+
+
+<script type="text/javascript">
+    $(function() {
+        var chatViewModel = new ChatViewModel('<%= @chat_room.id %>', '<%= @chat_room.name %>');
+        ko.applyBindings(chatViewModel, $('#live-chat')[0]);
+    });
+</script>

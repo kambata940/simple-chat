@@ -14,4 +14,8 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require turbolinks
-//= require_tree .
+//= require lib/knockout-3.4.0
+//= require lib/arbiter
+//= require bindings/scrollToBottom
+//= require bindings/toggler
+//= require view-models/chat
