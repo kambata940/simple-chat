@@ -9,7 +9,7 @@ module PokerGame
       'd' => Card.colors[:diamond]
     }.freeze
 
-    # TODO: make it return only cards of different colors
+    # TODO: Don't make N + 1 queries
     def self.parse(str_cards)
       cards = str_cards
               .split(',')

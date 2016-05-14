@@ -8,8 +8,13 @@ class PokerRoomsController < ApplicationController
     Rails.logger.info(
       "#{Time.current}: User #{session[:username]} mapped in Redis for room #{params[:id]}, status:#{status}"
     )
+    # Move to API
+    # Make DB table `PokerTable` with columns :id and :name
+    # `HandHistory` table with  
     @chat_room = ChatRoom.find_by(id: params[:id])
     @message = Message.new
+
+    render :show
   end
 
   def create

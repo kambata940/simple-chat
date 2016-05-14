@@ -14,15 +14,15 @@ module PokerGame
     # find the winner
     def find_winner
       @players
-        .map { |player| [player.user_id, board + player.cards] }
-        .map do |id, cards|
+        .map do |player|
+          cards = board + player.cards
           player_strongest_hand = cards.combination(5)
                                        .map do |five_cards|
                                          HandIndex.new(five_cards)
                                        end
                                        .max
 
-          [id, player_strongest_hand]
+          [player, player_strongest_hand]
         end
         .max_by { |_, hand| hand }
         .first
