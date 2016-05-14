@@ -2,12 +2,16 @@
 class ChatRoomChannel < ApplicationCable::Channel
   def subscribed
     room_id = REDIS.hget('chat_room', username)
-    Rails.logger.info("Get in redis #{room_id}")
+    Rails.logger.info("#{Time.current}: User #{username} is subscribed for chat_room_#{room_id}")
     stream_from "chat_room_#{room_id}"
-    Rails.logger.info("#{username} subscribed?????")
+    Rails.logger.info("#{Time.current}: #{username} subscribed!!!")
+  end
+
+  def follow
+    binding.pry
   end
 
   def unsubscribed
-    # Any cleanup needed when channel is unsubscribed
+    Rails.logger.info("#{Time.current}: #{username} unsubscribed!!!")
   end
 end

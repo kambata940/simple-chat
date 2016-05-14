@@ -4,5 +4,5 @@ class Card < ActiveRecord::Base
   validates :color, uniqueness: { scope: [:number] }
   validates :number, inclusion: NUMBER_RANGE
 
-  enum color: {spade: 'spade', club: 'club', heart: 'heart', diamond: 'diamond'}.freeze
+  enum color: { spade: 'spade', club: 'club', heart: 'heart', diamond: 'diamond' }
 end

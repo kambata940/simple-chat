@@ -24,6 +24,7 @@
 
 <script type="text/javascript">
     $(function() {
+        console.log('New chatViewModel');
         var chatViewModel = new ChatViewModel('<%= @chat_room.id %>', '<%= @chat_room.name %>');
         ko.applyBindings(chatViewModel, $('#live-chat')[0]);
     });
