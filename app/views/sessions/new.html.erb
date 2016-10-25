@@ -1,9 +1,0 @@
-<div class="jumbotron">
-  <h1 class="lead">Chat with strangers</h1>
-    <%= form_tag(session_path, method: 'post', class: 'navbar-form navbar-left') do %>
-      <div class='form-group'>
-        <%= text_field_tag('name', nil, class: 'form-control',placeholder: 'nickname') %>
-      </div>
-        <%= submit_tag('Begin chat', class: 'btn btn-default') %>
-    <% end %>
-</div>
